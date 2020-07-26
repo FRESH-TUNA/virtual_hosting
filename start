@@ -1,0 +1,2 @@
+docker run -d -v /etc/letsencrypt:/etc/letsencrypt -v $(pwd)/sites-enabled:/etc/nginx/sites-enabled -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf -p 443:443 --name virtual_hoster lunacircle4/nginx:1.14
+docker network connect production.knufesta2019 virtual_hoster
