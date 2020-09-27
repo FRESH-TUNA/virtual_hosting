@@ -26,4 +26,3 @@ spec:
         backend:
           serviceName: "knufesta2019"
           servicePort: 80
-
