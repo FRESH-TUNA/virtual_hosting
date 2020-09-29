@@ -6,6 +6,14 @@ spec:
   type: ExternalName
   externalName: production-was.knufesta2019.svc.cluster.local
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: floweryroad
+spec:
+  type: ExternalName
+  externalName: production-was.floweryroad.svc.cluster.local
+---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -16,7 +24,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "*.freshtuna.me"
+    - "knufesta2019.freshtuna.me"
+    secretName: "freshtuna-me"
+  - hosts:
+    - "floweryroad-api.freshtuna.me"
     secretName: "freshtuna-me"
   rules:
   - host: "knufesta2019.freshtuna.me"
@@ -26,4 +37,12 @@ spec:
         backend:
           serviceName: "knufesta2019"
           servicePort: 80
+  - host: "floweryroad-api.freshtuna.me"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: "floweryroad"
+          servicePort: 80
+
 
